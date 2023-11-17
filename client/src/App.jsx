@@ -2,7 +2,7 @@ function App() {
 
   return (
     <>
-    <h1>My Best Cook Book</h1>
+        <h1>My Best Cook Book</h1>
     </>
   )
 }
