@@ -27,24 +27,47 @@ main {
     text-align: center;
 }
 
-#introduction h3 {
+#introduction p {
+    font-size: 1.2rem;
     text-align: center;
 }
 
 /* Macarons line */
 .macarons-line {
-    padding: 0 35px;
+    /* padding: 0 35px; */
     margin: 60px auto;
+    text-align: center;
 }
 
 .first-macarons-line {
-    margin-top: 0;
+    margin-top: 0 !important;
 }
 
 .second-macarons-line {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 
 .macarons-line img {
-    width: 100%;
+    width: 70%;
+}
+
+
+/* Responsive
+-------------------------------------------------- */
+@media screen and (max-width: 600px) {
+    main .content-wrap {
+        padding: 24px 0;
+    }
+
+    h2 {
+        margin-bottom: 12px;
+    }
+    
+    .macarons-line {
+        margin: 26px;
+    }
+    
+    .macarons-line img {
+        width: 50%;
+    }
 }

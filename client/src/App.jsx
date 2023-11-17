@@ -8,7 +8,7 @@ function App() {
     <>
         <Header />
         
-        <main>
+        <main className="divider">
             <Home />
         </main>
 

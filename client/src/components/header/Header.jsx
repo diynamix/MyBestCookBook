@@ -4,11 +4,11 @@ export default function Header() {
             <div className="content-wrap">
                 <nav>
                     <div className="navigation">
-                        <div id="logo">
+                        <div className="logo">
                             <a href=""><h1>My Best Cook Book</h1></a>
                         </div>
 
-                        <div id="nav-bar">
+                        <div className="nav-bar">
                             <ul className="left-nav">
                                 <li className="nav-item">
                                     <a href="">Home</a>
@@ -16,26 +16,26 @@ export default function Header() {
                                 <li className="nav-item">
                                     <a href="">Recipes</a>
                                 </li>
-                                <li className="nav-item">
+                                {/* <li className="nav-item">
                                     <a href="">Favourite</a>
-                                </li>
+                                </li> */}
                             </ul>
                             <ul className="right-nav">
-                                {/* <li className="nav-item">
+                                <li className="nav-item">
                                     <a href="">Login</a>
                                 </li>
                                 <li className="nav-item">
                                     <a href="">Register</a>
-                                </li> */}
+                                </li>
+                                {/* <li className="nav-item">
+                                    <a href="">Add</a>
+                                </li>
                                 <li className="nav-item">
                                     <a href="">My Recipes</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a href="">Add</a>
-                                </li>
-                                <li className="nav-item">
                                     <a href="">Account</a>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
