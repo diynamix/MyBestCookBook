@@ -1,0 +1,261 @@
+/* Global
+.................................................. */
+html {
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Resets */
+body, header, main, footer, div, section, nav, p, ul, li, a, h1, h2, h3, h4, h5, h6, img, btn {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-size: 0px;
+    font-family: Dubai;
+    color: #000000;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    /* to keep footer at the bottom (also code in main) */
+    min-height: 100vh;
+}
+
+button, .button {
+    /*all: unset;*/
+    color: #000000;
+    font-size: 0.9rem;
+    font-family: Dubai;
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    line-height: normal;
+    padding: 2px 8px;
+    overflow: hidden;
+}
+
+.btn-unset {
+    all: unset;
+    cursor: pointer;
+}
+
+.content-wrap {
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 32px 0;
+    overflow: hidden;
+}
+
+main .content-wrap {
+    padding: 60px 0;
+}
+
+.divider {
+    border-bottom: 1px solid #808080;
+}
+
+h1 {
+    font-size: 2rem;
+    font-family: 'Rancho', cursive;
+    font-weight: 400;
+    color: #D1B464;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+h2 {
+    font-size: 1.6rem;
+    /* color: #87ACB0; */
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 0 0 40px 0;
+}
+
+h3 {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+
+/* Header
+.................................................. */
+header {
+    font-size: 1.15rem;
+    color: #E8E8E8;
+    line-height: 1;
+    background-color: #5D4A1F;
+}
+
+.navigation {
+    width: 100%;
+    position: relative;
+}
+
+#logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#nav-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav li:not(:last-child) {
+    margin-right: 30px;
+}
+
+nav a {
+    color: #E8E8E8;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px black;
+}
+
+    nav a:hover {
+        color: #D6D6D6;
+    }
+
+
+/* Main
+.................................................. */
+main {
+    font-size: 1rem;
+    background-color: #F2F0F0;
+    /* to keep footer at the bottom (also code in body) */
+    flex-grow: 1;
+}
+
+
+/* Footer
+.................................................. */
+footer {
+    font-size: 1rem;
+    background-color: #FFA07A;
+    text-align: center;
+}
+
+    footer span {
+        font-weight: 500;
+        display: block;
+    }
+
+    footer a {
+        display: inline-block;
+        color: #5E5E5E;
+    }
+
+
+/* Responsive
+-------------------------------------------------- */
+@media screen and (max-width: 1000px) {
+    header {
+        font-size: 1.1rem;
+    }
+
+    #logo {
+        display: block;
+        position: static;
+        top: unset;
+        left: unset;
+        transform: none;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #8A6E2F;
+        margin-bottom: 0.8rem;
+    }
+
+    h1 {
+        letter-spacing: 0;
+    }
+
+    header .content-wrap {
+        padding: 0.8rem 0;
+    }
+    
+    
+    #nav-bar {
+        justify-content: center;
+    }
+    
+    nav ul:first-of-type {
+        margin-right: 30px;
+    }
+}
+
+@media screen and (max-width: 670px) {
+
+    /* ********** NAVIGATION ********** */
+    #logo {
+        display: flex;
+        text-align: left;
+        justify-content: space-between;
+        padding-bottom: 0;
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    /* .drop-logo-settings {
+        padding-bottom: 12px !important;
+        border-bottom: 1px solid #8A6E2F !important;
+        margin-bottom: 20px !important;
+    } */
+
+    #nav-bar {
+        /*display: none;*/
+        /*display: block;*/
+        text-align: center;
+    }
+
+    nav ul {
+        display: block;
+        flex-direction: column;
+    }
+
+    nav li {
+        font-size: 24px;
+        color: #000;
+        background-color: #D1B464;
+        border-radius: 4px;
+        padding: 12px 0;
+    }
+
+    nav a {
+        display: block;
+        color: #FFF;
+        /*padding: 0 8px;*/
+    }
+
+    nav ul,
+    nav li {
+        margin-right: 0 !important;
+    }
+
+        nav ul:not(:last-child),
+        nav li:not(:last-child) {
+            margin-bottom: 8px;
+        }
+
+
+    /* ********** FOOTER ********** */
+}
+
+@media screen and (max-width: 405px) {
+    .page-title {
+        display: none;
+    }
+}

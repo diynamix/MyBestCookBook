@@ -1,0 +1,122 @@
+/* ********** PRODUCTS ********** */
+
+.recipe-list {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px 16px;
+    line-height: 1.2;
+}
+
+.recipe-box {
+    width: 100%;
+    min-width: 200px;
+    border: 1px solid #87ACB0;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+
+/* Product-img */
+.recipe-img {
+    aspect-ratio: 2 / 3;
+    margin-bottom: 12px;
+}
+
+    .recipe-img img {
+        width: 100%;
+        height: 100%;
+        border-bottom: 1px solid #87ACB0;
+        vertical-align: bottom;
+        object-fit: cover;
+    }
+
+/* Product-info */
+.recipe-info {
+    padding: 0 12px;
+    margin-bottom: 24px;
+}
+
+.recipe-name {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+    .recipe-name a {
+        color: #87ACB0;
+        text-decoration: none;
+    }
+
+.recipe-type {
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 4px;
+}
+
+.recipe-size {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.recipe-price {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* Product-btns */
+.recipe-btns {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 12px;
+    margin-bottom: 16px;
+}
+
+.recipe-btns form {
+    width: 100%;
+}
+
+.wishlist-btn {
+    width: 100%;
+}
+
+.edit-btn, .delete-btn {
+    width: 40%;
+}
+
+/* ********** WISHLIST COLORS ********** */
+.wishlist .recipe-box {
+    border-color: #C08497;
+}
+
+.wishlist .recipe-img img {
+    border-color: #C08497;
+}
+
+.wishlist .recipe-name a {
+    color: #C08497;
+}
+
+
+/* ********** RESPONSIVE ********** */
+
+@media screen and (max-width: 950px) {
+    .recipe-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .recipe-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media screen and (max-width: 465px) {
+    .recipe-list {
+        grid-template-columns: none;
+    }
+}
