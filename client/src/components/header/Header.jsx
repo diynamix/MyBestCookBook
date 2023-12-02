@@ -11,10 +11,10 @@ export default function Header() {
                         <div className="nav-bar">
                             <ul className="left-nav">
                                 <li className="nav-item">
-                                    <a href="">Home</a>
+                                    <a href="/">Home</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a href="">Recipes</a>
+                                    <a href="/recipes">Recipes</a>
                                 </li>
                                 {/* <li className="nav-item">
                                     <a href="">Favourite</a>

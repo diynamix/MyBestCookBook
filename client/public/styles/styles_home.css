@@ -1,10 +1,10 @@
 /* Main
 .................................................. */
-main {
+.home main {
     text-align: justify;
 }
 
-    main .content-wrap {
+    .home .content-wrap {
         max-width: 800px;
     }
 

@@ -1,8 +1,8 @@
-/* ********** PRODUCTS ********** */
+/* ********** RECIPES ********** */
 
 .recipe-list {
     display: grid;
-    justify-content: center;
+    /* justify-content: center; */
     grid-template-columns: repeat(4, 1fr);
     gap: 22px 16px;
     line-height: 1.2;
@@ -17,9 +17,9 @@
     overflow: hidden;
 }
 
-/* Product-img */
+/* Recipe-img */
 .recipe-img {
-    aspect-ratio: 2 / 3;
+    aspect-ratio: 1/1;
     margin-bottom: 12px;
 }
 
@@ -31,14 +31,17 @@
         object-fit: cover;
     }
 
-/* Product-info */
+/* Recipe-info */
 .recipe-info {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    line-height: 1;
     padding: 0 12px;
     margin-bottom: 24px;
 }
 
 .recipe-name {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
     letter-spacing: 1px;
     margin-bottom: 12px;
@@ -49,23 +52,23 @@
         text-decoration: none;
     }
 
-.recipe-type {
+    .recipe-name a:hover {
+        text-decoration: underline;
+    }
+
+.recipe-rate {
+    /* position: absolute; */
     font-size: 16px;
     font-style: italic;
-    margin-bottom: 4px;
+    align-self: center;
+    color: #87ACB0;
 }
 
-.recipe-size {
-    font-size: 16px;
-    margin-bottom: 12px;
+.recipe-rate button:hover {
+    color: #C08497;
 }
 
-.recipe-price {
-    font-size: 20px;
-    font-weight: 400;
-}
-
-/* Product-btns */
+/* Recipe-btns */
 .recipe-btns {
     display: flex;
     justify-content: space-evenly;
@@ -73,16 +76,24 @@
     margin-bottom: 16px;
 }
 
-.recipe-btns form {
-    width: 100%;
-}
-
-.wishlist-btn {
+.view-btn {
+    font-size: 18px;
+    display: block;
     width: 100%;
 }
 
 .edit-btn, .delete-btn {
-    width: 40%;
+    font-size: 18px;
+    width: 45%;
+    margin-right: 0;
+}
+
+.recipe-btns button:hover {
+    color: #3b8e96;
+}
+
+button.delete-btn:hover {
+    color: #DC3545;
 }
 
 /* ********** WISHLIST COLORS ********** */
