@@ -18,7 +18,7 @@ export default function RecipeList() {
                             </a>
                         </div>
                         <div className="recipe-rate">
-                            <button className="btn-unset"><i class="fas fa-heart"></i> 999</button>
+                            <button className="btn-unset"><i className="fas fa-heart"></i> 999</button>
                         </div>
                     </div>
                     <div className="recipe-btns user">
@@ -39,7 +39,7 @@ export default function RecipeList() {
                             </a>
                         </div>
                         <div className="recipe-rate">
-                            <button className="btn-unset"><i class="fas fa-heart"></i> 999</button>
+                            <button className="btn-unset"><i className="fas fa-heart"></i> 999</button>
                         </div>
                     </div>
                     <div className="recipe-btns admin">
