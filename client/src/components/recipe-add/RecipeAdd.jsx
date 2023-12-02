@@ -31,8 +31,8 @@ export default function RecipeAdd() {
                         <legend>Add Recipe</legend>
 
                         <div className="form-group">
-                            <label htmlFor="title" className="required">Recipe name</label>
-                            <input type="text" id="title" name="title" placeholder="Recipe title" required />
+                            <label htmlFor="name" className="required">Recipe title</label>
+                            <input type="text" id="name" name="name" placeholder="Recipe title" required />
                         </div>
 
                         <div className="form-group">

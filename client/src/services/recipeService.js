@@ -1,15 +1,17 @@
+import * as request from "../lib/request";
+
 const baseUrl = 'http://localhost:3030/jsonstore';
 
-export const add = async (recipeData) => {
-    const response = await fetch(`${baseUrl}/recipes`, {
-        method: 'Post',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(recipeData),
-    });
+export const getAll = async () => {
+    const result = await request.get(`${baseUrl}/recipes`);
 
-    const result = await response.json();
+    console.log(result);
+
+    return Object.values(result);
+};
+
+export const add = async (recipeData) => {
+    const result = await request.post(`${baseUrl}/recipes`, recipeData);
 
     return result;
 };
