@@ -28,7 +28,6 @@ body {
 }
 
 button, .button {
-    /*all: unset;*/
     color: #000000;
     font-size: 0.9rem;
     font-family: Dubai;
@@ -40,6 +39,7 @@ button, .button {
     line-height: normal;
     padding: 2px 8px;
     overflow: hidden;
+    background-color: #F2F0F0;
 }
 
 .btn-unset {
@@ -75,7 +75,7 @@ h1 {
 h2 {
     font-size: 1.6rem;
     /* color: #87ACB0; */
-    letter-spacing: 2px;
+    /* letter-spacing: 1px; */
     text-align: center;
     margin: 0 0 40px 0;
 }
@@ -83,6 +83,14 @@ h2 {
 h3 {
     font-size: 1.2rem;
     letter-spacing: 1px;
+}
+
+.link {
+    color: #87ACB0;
+}
+
+.link:hover {
+    color: #C08497;
 }
 
 
@@ -199,10 +207,6 @@ footer {
 
 @media screen and (max-width: 600px) {
 
-    html {
-        font-size: 14px;
-    }
-
     /* ********** NAVIGATION ********** */
     .logo,
     .page-title {
@@ -212,25 +216,24 @@ footer {
     .nav-bar {
         text-align: center;
         flex-wrap: wrap;
-        /* justify-content: space-around; */
-    }
-
-    .nav-bar li {
-        font-size: 1.4rem;
     }
 
     .nav-bar a {
         display: block;
         color: #FFF;
-        /*padding: 0 8px;*/
     }
 
     .nav-bar ul {
         margin: 6px 12px !important;
     }
 
+    .left-nav {
+        padding-bottom: 12px;
+        border-bottom: 1px solid #8A6E2F;
+    }
+
     .nav-bar li:not(:last-child) {
-        margin-right: 24px;
+        margin-right: 36px;
     }
 
 

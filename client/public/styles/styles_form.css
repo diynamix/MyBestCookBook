@@ -41,14 +41,6 @@ fieldset {
         margin-bottom: 40px;
     }
 
-main a {
-    color: #C08497;
-}
-
-    main a:hover {
-        color: #87ACB0;
-    }
-
 .form-group > * {
     display: block;
 }

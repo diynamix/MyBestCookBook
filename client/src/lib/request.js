@@ -1,11 +1,11 @@
-const buildOptions = (method, data) => {
+const buildOptions = (data) => {
     const options = {};
 
     if (data) {
         options.body = JSON.stringify(data);
         options.headers = {
             'content-type': 'application/json',
-        }
+        };
     }
 
     return options;
@@ -17,9 +17,13 @@ const request = async (method, url, data) => {
         method,
     });
 
-    const result = await response.json();
+    try {
+        const result = await response.json();
 
-    return result;
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
 };
 
 export const get = request.bind(null, 'GET');

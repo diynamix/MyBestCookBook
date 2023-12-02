@@ -42,12 +42,12 @@ export default function RecipeAdd() {
 
                         <div className="form-group">
                             <label htmlFor="ingredients" className="required">Ingredients</label>
-                            <textarea id="ingredients" name="ingredients" placeholder="Ingredients..." required></textarea>
+                            <textarea id="ingredients" name="ingredients" rows="7" placeholder="Ingredients..." required></textarea>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="steps" className="required">Description</label>
-                            <textarea id="steps" name="steps" placeholder="Description..." required></textarea>
+                            <label htmlFor="steps" className="required">Steps</label>
+                            <textarea id="steps" name="steps" rows="7" placeholder="Steps..." required></textarea>
                         </div>
 
                         <div>

@@ -11,8 +11,6 @@ export default function RecipeList() {
             .then(result => setRecipes(result));
     }, []);
 
-    console.log(recipes);
-
     return (
         <div className="content-wrap">
             <h2 className="divider">Recipes</h2>

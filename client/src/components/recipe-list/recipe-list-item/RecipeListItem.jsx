@@ -1,32 +1,33 @@
+import { Link } from "react-router-dom";
+
 export default function RecipeListItem({
-    title,
+    _id,
+    name,
     imageUrl,
     likes
 }) {
     return (
         <div className="recipe-box">
             <div className="recipe-img">
-                <a href="#">
+                <Link to={`/recipes/${_id}`}>
                     <img src={imageUrl} />
-                </a>
+                </Link>
             </div>
             <div className="recipe-info">
                 <div className="recipe-name">
-                    <a href="#">
-                        {title}
-                    </a>
+                    <Link to={`/recipes/${_id}`}>{name}</Link>
                 </div>
                 <div className="recipe-rate">
                     <button className="btn-unset"><i className="fas fa-heart"></i> {likes}</button>
                 </div>
             </div>
             <div className="recipe-btns user">
-                <button className="view-btn">View</button>
+                <Link to={`/recipes/${_id}`} className="view-btn button">View</Link>
             </div>
-            {/* <div className="recipe-btns admin">
+            <div className="recipe-btns admin">
                 <button className="edit-btn">Edit</button>
                 <button className="delete-btn">Delete</button>
-            </div> */}
+            </div>
         </div>
     );
 }

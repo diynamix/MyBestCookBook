@@ -41,9 +41,9 @@
 }
 
 .recipe-name {
-    font-size: 24px;
+    font-size: 1.2rem;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     margin-bottom: 12px;
 }
 
@@ -74,7 +74,6 @@
     justify-content: space-evenly;
     padding: 0 12px;
     margin-bottom: 16px;
-    align-self: baseline;
 }
 
 .view-btn {
@@ -89,11 +88,11 @@
     margin-right: 0;
 }
 
-.recipe-btns button:hover {
+.view-btn:hover, .edit-btn:hover {
     color: #3b8e96;
 }
 
-button.delete-btn:hover {
+.delete-btn:hover {
     color: #DC3545;
 }
 
