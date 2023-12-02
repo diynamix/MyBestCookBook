@@ -26,7 +26,6 @@ export default function Login() {
                         </div>
                     </fieldset>
 
-                    <div className="login-register-switch">Don't have an account? Go to <a link="/register">register</a>.</div>
                 </form>
 
             </section>
