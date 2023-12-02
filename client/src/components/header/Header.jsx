@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Header() {
     return (
         <header className="divider">
@@ -5,37 +7,37 @@ export default function Header() {
                 <nav>
                     <div className="navigation">
                         <div className="logo">
-                            <a href=""><h1>My Best Cook Book</h1></a>
+                            <Link to="/"><h1>My Best Cook Book</h1></Link>
                         </div>
 
                         <div className="nav-bar">
                             <ul className="left-nav">
                                 <li className="nav-item">
-                                    <a href="/">Home</a>
+                                    <Link to="/">Home</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a href="/recipes">Recipes</a>
+                                    <Link to="/recipes">Recipes</Link>
                                 </li>
-                                {/* <li className="nav-item">
-                                    <a href="">Favourite</a>
-                                </li> */}
+                                <li className="nav-item">
+                                    <Link to="/favourite">Favourite</Link>
+                                </li>
                             </ul>
                             <ul className="right-nav">
-                                <li className="nav-item">
-                                    <a href="">Login</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="">Register</a>
-                                </li>
                                 {/* <li className="nav-item">
-                                    <a href="">Add</a>
+                                    <Link to="/login">Login</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a href="">My Recipes</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="">Account</a>
+                                    <Link to="/register">Register</Link>
                                 </li> */}
+                                <li className="nav-item">
+                                    <Link to="/recipes/add">Add</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/my">My Recipes</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to="/logout">Logout</Link>
+                                </li>
                             </ul>
                         </div>
                     </div>
