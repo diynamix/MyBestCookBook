@@ -68,10 +68,21 @@ fieldset {
     .sbm-btn:hover {
         background-color: #5bbdc7;
     }
-
+    
 .login-register-switch {
     text-align: center;
     margin-top: 30px;
+}
+
+.validation-span {
+    font-size: 0.9rem;
+    line-height: 1;
+    margin-top: 6px;
+    color: #DC3545;
+}
+
+.validation-error-field {
+    border-color: #DC3545;
 }
 
 

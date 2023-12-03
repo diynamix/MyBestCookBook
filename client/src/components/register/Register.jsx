@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function Register() {
     return(
         <div className="content-wrap login">
@@ -11,15 +13,15 @@ export default function Register() {
 
                         <legend>Login</legend>
 
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label htmlFor="firstName" className="form-label required">First name</label>
                             <input type="text" id="firstName" name="firstName" className="form-control" />
-                        </div>
+                        </div> */}
 
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label htmlFor="lastName" className="form-label required">Last name</label>
                             <input type="text" id="lastName" name="lastName" className="form-control" />
-                        </div>
+                        </div> */}
 
                         <div className="form-group">
                             <label htmlFor="email" className="form-label required">Email</label>
@@ -41,6 +43,7 @@ export default function Register() {
                         </div>
                     </fieldset>
 
+                    <div className="login-register-switch">Already registered? Go to <Link to="/login" className="link">login</Link>.</div>
                 </form>
 
             </section>

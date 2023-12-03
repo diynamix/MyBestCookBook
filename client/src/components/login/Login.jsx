@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function Login() {
     return(
         <div className="content-wrap login">
@@ -26,6 +28,7 @@ export default function Login() {
                         </div>
                     </fieldset>
 
+                    <div className="login-register-switch">Don't have an account? Go to <Link to="/register" className="link">register</Link>.</div>
                 </form>
 
             </section>

@@ -53,6 +53,8 @@ export default function RecipeDetails() {
                     </div>
                 </div>
             </div>
+
+            <Link to='/recipes' className="link">&lt;&lt;Back</Link>
         </div>
     );
 };

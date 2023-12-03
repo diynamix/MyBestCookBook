@@ -10,8 +10,21 @@ const formInitialState = {
     steps: '',
 };
 
+const IputLengthRequirements = {
+    nameMinLength: 2,
+    nameMaxLength: 30,
+    imageUrlMinLength: 10,
+    imageUrlMaxLength: 2048,
+    ingredientsMinLength: 10,
+    ingredientsMaxLength: 1000,
+    stepsMinLength: 10,
+    stepsMaxLength: 5000,
+};
+
 export default function RecipeAdd() {
     const [formValues, setFormValues] = useState(formInitialState);
+    const [errors, setErrors] = useState(formInitialState);
+
     const navigate = useNavigate();
 
     const changeHandler = (e) => {
@@ -20,25 +33,44 @@ export default function RecipeAdd() {
             [e.target.name]: e.target.value,
         }));
     };
-    
-    const resetFormHandler = () => {
-        setFormValues(formInitialState);
-    };
 
     const addRecipeSubmitHandler = async (e) => {
         e.preventDefault();
 
-        // const recipeData = Object.fromEntries(new FormData(e.currentTarget));
+        if (!(errors.name === '' && errors.imageUrl === ''
+            && errors.ingredients === '' && errors.steps === '')) {
+            return;
+        }
         
         try {
             await recipeService.add(formValues);
-
             navigate('/recipes');
         } catch (error) {
             // Notification
             console.log(error);
         }
     }
+
+    // const resetFormHandler = () => {
+    //     setFormValues(formInitialState);
+    // };
+
+    const validationHandler = async (e) => {
+        const inputTitle = e.target.name;
+        const inputTitleMinLength = IputLengthRequirements[`${inputTitle}MinLength`];
+        const inputTitleMaxLength = IputLengthRequirements[`${inputTitle}MaxLength`];
+        
+        setErrors(state => ({
+            ...state,
+            [inputTitle]:
+            (formValues[inputTitle].length < inputTitleMinLength
+                || formValues[inputTitle].length > inputTitleMaxLength)
+                ? `The field must be between ${inputTitleMinLength} and ${inputTitleMaxLength} characters!`
+                : '',
+        }));
+
+        console.log(formInitialState === errors);
+    };
     
     return (
         <div className="content-wrap add-recipe">
@@ -56,10 +88,15 @@ export default function RecipeAdd() {
                                 type="text"
                                 id="name"
                                 name="name"
-                                value={formValues.name}
-                                onChange={changeHandler}
                                 placeholder="Recipe title"
+                                value={formValues.name}
+                                minLength={IputLengthRequirements.nameMinLength}
+                                maxLength={IputLengthRequirements.nameMaxLength}
+                                onChange={changeHandler}
+                                onBlur={validationHandler}
+                                className={errors.name && 'validation-error-field'}
                                 required />
+                            <span className="validation-span">{errors.name}</span>
                         </div>
 
                         <div className="form-group">
@@ -68,10 +105,15 @@ export default function RecipeAdd() {
                                 type="text"
                                 id="imageUrl"
                                 name="imageUrl"
-                                value={formValues.imageUrl}
-                                onChange={changeHandler}
                                 placeholder="Image link"
+                                value={formValues.imageUrl}
+                                minLength={IputLengthRequirements.imageUrlMinLength}
+                                maxLength={IputLengthRequirements.imageUrlMaxLength}
+                                onChange={changeHandler}
+                                onBlur={validationHandler}
+                                className={errors.imageUrl && 'validation-error-field'}
                                 required />
+                            <span className="validation-span">{errors.imageUrl}</span>
                         </div>
 
                         <div className="form-group">
@@ -80,11 +122,16 @@ export default function RecipeAdd() {
                                 id="ingredients"
                                 name="ingredients"
                                 rows="7"
-                                value={formValues.ingredients}
-                                onChange={changeHandler}
                                 placeholder="Ingredients..."
+                                value={formValues.ingredients}
+                                minLength={IputLengthRequirements.ingredientsMinLength}
+                                maxLength={IputLengthRequirements.ingredientsMaxLength}
+                                onChange={changeHandler}
+                                onBlur={validationHandler}
+                                className={errors.ingredients && 'validation-error-field'}
                                 required>
                             </textarea>
+                            <span className="validation-span">{errors.ingredients}</span>
                         </div>
 
                         <div className="form-group">
@@ -93,15 +140,21 @@ export default function RecipeAdd() {
                                 id="steps"
                                 name="steps"
                                 rows="7"
-                                value={formValues.steps}
-                                onChange={changeHandler}
                                 placeholder="Steps..."
+                                value={formValues.steps}
+                                minLength={IputLengthRequirements.stepsMinLength}
+                                maxLength={IputLengthRequirements.stepsMaxLength}
+                                onChange={changeHandler}
+                                onBlur={validationHandler}
+                                className={errors.steps && 'validation-error-field'}
                                 required>
                             </textarea>
+                            <span className="validation-span">{errors.steps}</span>
                         </div>
 
                         <div>
-                            <input className="button sbm-btn" type="submit" value="Add recipe" />
+                            <button type="submit" className="button sbm-btn">Add recipe</button>
+                            {/* <button type="button" onClick={resetFormHandler} className="button sbm-btn">Reset</button> */}
                         </div>
 
                     </fieldset>
