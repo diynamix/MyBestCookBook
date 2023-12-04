@@ -45,6 +45,7 @@
 .recipe-details-ingredients, .recipe-details-steps {
     display: block;
     margin-bottom: 20px;
+    white-space: pre-wrap;
 }
 
 /* recipe-btns */

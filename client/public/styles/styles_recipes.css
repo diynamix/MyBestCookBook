@@ -37,7 +37,7 @@
     /* justify-content: space-between; */
     line-height: 1;
     padding: 0 12px;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 }
 
 .recipe-name {
@@ -56,20 +56,29 @@
         text-decoration: underline;
     }
 
-.recipe-rate {
-    /* position: absolute; */
+.recipe-creator a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.recipe-creator a:hover {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+/* .recipe-rate {
     font-size: 16px;
     font-style: italic;
     align-self: center;
     color: #87ACB0;
-}
+} */
 
 .recipe-rate button:hover {
     color: #C08497;
 }
 
 /* Recipe-btns */
-.recipe-btns {
+/* .recipe-btns {
     display: flex;
     justify-content: space-evenly;
     padding: 0 12px;
@@ -86,7 +95,7 @@
     font-size: 18px;
     width: 45%;
     margin-right: 0;
-}
+} */
 
 .view-btn:hover, .edit-btn:hover {
     color: #3b8e96;

@@ -13,6 +13,10 @@ export default function RecipeDetails() {
             .then(setRecipe);
     }, [recipeId]);
 
+    // if (recipe.ingredients) {
+    //     console.log(recipe.ingredients.split('\n').join('\n'));
+    // }
+
     return(
         <div className="content-wrap recipe-details">
             <Link to='/recipes' className="link">&lt;&lt;Back</Link>
@@ -30,12 +34,12 @@ export default function RecipeDetails() {
                     <div className="recipe-details-ingredients">
                         Ingredients:
                         <br />
-                        &emsp;{recipe.ingredients}
+                        {recipe.ingredients}
                     </div>
                     <div className="recipe-details-steps">
                         Steps:
                         <br />
-                        &emsp;{recipe.steps}
+                        {recipe.steps}
                     </div>
                     <div className="recipe-details-btns">
                         <a className="edit-btn green-btn button">Edit</a>

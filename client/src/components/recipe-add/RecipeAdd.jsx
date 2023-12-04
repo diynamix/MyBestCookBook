@@ -3,11 +3,18 @@ import { useNavigate } from "react-router-dom";
 
 import * as recipeService from "../../services/recipeService";
 
-const formInitialState = {
-    name: '',
-    imageUrl: '',
-    ingredients: '',
-    steps: '',
+const FormKeys = {
+    Name: 'name',
+    ImageUrl: 'imageUrl',
+    Ingredients: 'ingredients',
+    Steps: 'steps',
+};
+
+const FormInitialState = {
+    [FormKeys.Name]: '',
+    [FormKeys.ImageUrl]: '',
+    [FormKeys.Ingredients]: '',
+    [FormKeys.Steps]: '',
 };
 
 const IputLengthRequirements = {
@@ -22,8 +29,8 @@ const IputLengthRequirements = {
 };
 
 export default function RecipeAdd() {
-    const [formValues, setFormValues] = useState(formInitialState);
-    const [errors, setErrors] = useState(formInitialState);
+    const [formValues, setFormValues] = useState(FormInitialState);
+    const [errors, setErrors] = useState(FormInitialState);
 
     const navigate = useNavigate();
 
@@ -37,8 +44,10 @@ export default function RecipeAdd() {
     const addRecipeSubmitHandler = async (e) => {
         e.preventDefault();
 
-        if (!(errors.name === '' && errors.imageUrl === ''
-            && errors.ingredients === '' && errors.steps === '')) {
+        if (!(errors[FormKeys.Name] === ''
+            && errors[FormKeys.ImageUrl] === ''
+            && errors[FormKeys.Ingredients] === ''
+            && errors[FormKeys.Steps] === '')) {
             return;
         }
         
@@ -69,7 +78,7 @@ export default function RecipeAdd() {
                 : '',
         }));
 
-        console.log(formInitialState === errors);
+        console.log(FormInitialState === errors);
     };
     
     return (
@@ -83,73 +92,73 @@ export default function RecipeAdd() {
                         <legend>Add Recipe</legend>
 
                         <div className="form-group">
-                            <label htmlFor="name" className="required">Recipe title</label>
+                            <label htmlFor={[FormKeys.Name]} className="required">Recipe title</label>
                             <input
                                 type="text"
                                 id="name"
-                                name="name"
+                                name={FormKeys.Name}
                                 placeholder="Recipe title"
-                                value={formValues.name}
+                                value={formValues[FormKeys.Name]}
                                 minLength={IputLengthRequirements.nameMinLength}
                                 maxLength={IputLengthRequirements.nameMaxLength}
                                 onChange={changeHandler}
                                 onBlur={validationHandler}
-                                className={errors.name && 'validation-error-field'}
+                                className={errors[FormKeys.Name] && 'validation-error-field'}
                                 required />
-                            <span className="validation-span">{errors.name}</span>
+                            <span className="validation-span">{errors[FormKeys.Name]}</span>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="imageUrl" className="required">Image link</label>
+                            <label htmlFor={[FormKeys.ImageUrl]} className="required">Image link</label>
                             <input
                                 type="text"
                                 id="imageUrl"
-                                name="imageUrl"
+                                name={[FormKeys.ImageUrl]}
                                 placeholder="Image link"
-                                value={formValues.imageUrl}
+                                value={formValues[FormKeys.ImageUrl]}
                                 minLength={IputLengthRequirements.imageUrlMinLength}
                                 maxLength={IputLengthRequirements.imageUrlMaxLength}
                                 onChange={changeHandler}
                                 onBlur={validationHandler}
-                                className={errors.imageUrl && 'validation-error-field'}
+                                className={errors[FormKeys.ImageUrl] && 'validation-error-field'}
                                 required />
-                            <span className="validation-span">{errors.imageUrl}</span>
+                            <span className="validation-span">{errors[FormKeys.ImageUrl]}</span>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="ingredients" className="required">Ingredients</label>
+                            <label htmlFor={[FormKeys.Ingredients]} className="required">Ingredients</label>
                             <textarea
                                 id="ingredients"
-                                name="ingredients"
+                                name={[FormKeys.Ingredients]}
                                 rows="7"
                                 placeholder="Ingredients..."
-                                value={formValues.ingredients}
+                                value={formValues[FormKeys.Ingredients]}
                                 minLength={IputLengthRequirements.ingredientsMinLength}
                                 maxLength={IputLengthRequirements.ingredientsMaxLength}
                                 onChange={changeHandler}
                                 onBlur={validationHandler}
-                                className={errors.ingredients && 'validation-error-field'}
+                                className={errors[FormKeys.Ingredients] && 'validation-error-field'}
                                 required>
                             </textarea>
-                            <span className="validation-span">{errors.ingredients}</span>
+                            <span className="validation-span">{errors[FormKeys.Ingredients]}</span>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="steps" className="required">Steps</label>
+                            <label htmlFor={[FormKeys.Steps]} className="required">Steps</label>
                             <textarea
                                 id="steps"
-                                name="steps"
+                                name={[FormKeys.Steps]}
                                 rows="7"
                                 placeholder="Steps..."
-                                value={formValues.steps}
+                                value={formValues[FormKeys.Steps]}
                                 minLength={IputLengthRequirements.stepsMinLength}
                                 maxLength={IputLengthRequirements.stepsMaxLength}
                                 onChange={changeHandler}
                                 onBlur={validationHandler}
-                                className={errors.steps && 'validation-error-field'}
+                                className={errors[FormKeys.Steps] && 'validation-error-field'}
                                 required>
                             </textarea>
-                            <span className="validation-span">{errors.steps}</span>
+                            <span className="validation-span">{errors[FormKeys.Steps]}</span>
                         </div>
 
                         <div>

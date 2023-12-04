@@ -85,12 +85,12 @@ h3 {
     letter-spacing: 1px;
 }
 
-.link {
-    color: #87ACB0;
+a, .link {
+    color: #C08497;
 }
 
-.link:hover {
-    color: #C08497;
+a:hover, .link:hover {
+    color: #87ACB0;
 }
 
 
