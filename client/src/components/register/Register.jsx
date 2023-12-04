@@ -11,7 +11,7 @@ export default function Register() {
 
                     <fieldset>
 
-                        <legend>Login</legend>
+                        <legend>Register</legend>
 
                         {/* <div className="form-group">
                             <label htmlFor="firstName" className="form-label required">First name</label>
