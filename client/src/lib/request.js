@@ -8,6 +8,15 @@ const buildOptions = (data) => {
         };
     }
 
+    const token = localStorage.getItem('accessToken');
+
+    if (token) {
+        options.headers = {
+            ...options.headers,
+            'X-Authorization': token,
+        };
+    }
+
     return options;
 };
 
@@ -17,13 +26,25 @@ const request = async (method, url, data) => {
         method,
     });
 
-    try {
-        const result = await response.json();
-
-        return result;
-    } catch (error) {
-        console.log(error);
+    if (response.status === 204) {
+        return {};
     }
+
+    // try {
+    //     const result = await response.json();
+
+    //     return result;
+    // } catch (error) {
+    //     console.log(error);
+    // }
+
+    const result = await response.json();
+
+    if (!response.ok) {
+        throw result;
+    }
+
+    return result;
 };
 
 export const get = request.bind(null, 'GET');

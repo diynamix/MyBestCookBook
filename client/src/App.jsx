@@ -13,16 +13,23 @@ import RecipeAdd from './components/recipe-add/RecipeAdd';
 import RecipeDetails from './components/recipe-details/RecipeDetails';
 import RecipeList from './components/recipe-list/RecipeList';
 import Register from './components/register/Register';
+import Logout from './components/logout/Logout';
 
 function App() {
     const navigate = useNavigate();
-    const [auth, setAuth] = useState({});
+    const [auth, setAuth] = useState(() => {
+        localStorage.removeItem('accessToken');
+
+        return {};
+    });
 
     const loginSubmitHandler = async (values) => {
         const result = await authService.login(values.email, values.password);
         
         setAuth(result);
-        
+
+        localStorage.setItem('accessToken', result.accessToken);
+
         navigate(Path.Home);
     };
 
@@ -35,10 +42,18 @@ function App() {
         
         navigate(Path.Home);
     };
+
+    const logoutHandler = () => {
+        setAuth({});
+
+        localStorage.removeItem('accessToken');
+        // navigate(Path.Home);
+    };
     
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
+        logoutHandler,
         isAuthenticated: !!auth.email,
         userId: auth['_id'],
         email: auth.email,
@@ -58,6 +73,7 @@ function App() {
                     <Route path='/recipes/:recipeId' element={<RecipeDetails />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
+                    <Route path={Path.Logout} element={<Logout />} />
                 </Routes>
             </main>
 
