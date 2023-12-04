@@ -77,8 +77,6 @@ export default function RecipeAdd() {
                 ? `The field must be between ${inputTitleMinLength} and ${inputTitleMaxLength} characters!`
                 : '',
         }));
-
-        console.log(FormInitialState === errors);
     };
     
     return (

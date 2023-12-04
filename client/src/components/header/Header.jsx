@@ -18,18 +18,18 @@ export default function Header() {
                                 <li className="nav-item">
                                     <Link to="/recipes">Recipes</Link>
                                 </li>
-                                <li className="nav-item">
+                                {/* <li className="nav-item">
                                     <Link to="/favourite">Favourite</Link>
-                                </li>
+                                </li> */}
                             </ul>
                             <ul className="right-nav">
-                                {/* <li className="nav-item">
+                                <li className="nav-item">
                                     <Link to="/login">Login</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to="/register">Register</Link>
-                                </li> */}
-                                <li className="nav-item">
+                                </li>
+                                {/* <li className="nav-item">
                                     <Link to="/recipes/add">Add</Link>
                                 </li>
                                 <li className="nav-item">
@@ -37,7 +37,7 @@ export default function Header() {
                                 </li>
                                 <li className="nav-item">
                                     <Link to="/logout">Logout</Link>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
