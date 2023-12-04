@@ -1,41 +1,85 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom"
 
+import AuthContext from "../../contexts/authContext";
+import useForm from "../../hooks/useForm";
+
+const RegisterFormKeys = {
+    Email: 'email',
+    Username: 'username',
+    Password: 'password',
+    ConfirmPassword: 'confirmPassword',
+};
+
+const FormInitialState = {
+    [RegisterFormKeys.Email]: '',
+    [RegisterFormKeys.Username]: '',
+    [RegisterFormKeys.Password]: '',
+    [RegisterFormKeys.ConfirmPassword]: '',
+};
+
 export default function Register() {
+    const {registerSubmitHandler} = useContext(AuthContext);
+    const {formValues, onChange, onSubmit} = useForm(registerSubmitHandler, FormInitialState);
+
     return(
         <div className="content-wrap login">
             <h2 className="page-title divider">Register</h2>
 
             <section className="form-section">
 
-                <form id="login-form" method="post">
+                <form id="login-form" onSubmit={onSubmit}>
 
                     <fieldset>
 
                         <legend>Register</legend>
 
-                        {/* <div className="form-group">
-                            <label htmlFor="firstName" className="form-label required">First name</label>
-                            <input type="text" id="firstName" name="firstName" className="form-control" />
-                        </div> */}
-
-                        {/* <div className="form-group">
-                            <label htmlFor="lastName" className="form-label required">Last name</label>
-                            <input type="text" id="lastName" name="lastName" className="form-control" />
-                        </div> */}
-
                         <div className="form-group">
-                            <label htmlFor="email" className="form-label required">Email</label>
-                            <input type="email" id="email" name="email" className="form-control" />
+                            <label htmlFor={RegisterFormKeys.Username} className="form-label required">Username</label>
+                            <input
+                                type="text"
+                                id="firstName"
+                                name={RegisterFormKeys.Username}
+                                value={formValues[RegisterFormKeys.Username]}
+                                className="form-control"
+                                onChange={onChange}
+                                required />
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="password" className="form-label required">Password</label>
-                            <input type="password" id="password" name="password" className="form-control" />
+                            <label htmlFor={RegisterFormKeys.Email} className="form-label required">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name={RegisterFormKeys.Email}
+                                value={formValues[RegisterFormKeys.Email]}
+                                className="form-control"
+                                onChange={onChange}
+                                required />
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="confirmPassword" className="form-label required">Confirm password</label>
-                            <input type="password" id="confirmPassword" name="confirmPassword" className="form-control" />
+                            <label htmlFor={RegisterFormKeys.Password} className="form-label required">Password</label>
+                            <input
+                                type="password"
+                                id="password"
+                                name={RegisterFormKeys.Password}
+                                value={formValues[RegisterFormKeys.Password]}
+                                className="form-control"
+                                onChange={onChange}
+                                required />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor={RegisterFormKeys.ConfirmPassword} className="form-label required">Confirm password</label>
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name={RegisterFormKeys.ConfirmPassword}
+                                value={formValues[RegisterFormKeys.ConfirmPassword]}
+                                className="form-control"
+                                onChange={onChange}
+                                required />
                         </div>
 
                         <div>

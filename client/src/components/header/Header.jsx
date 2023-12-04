@@ -1,6 +1,13 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import AuthContext from '../../contexts/authContext';
+
 export default function Header() {
+    const {
+        isAuthenticated,
+    } = useContext(AuthContext)
+
     return (
         <header className="divider">
             <div className="content-wrap">
@@ -18,26 +25,41 @@ export default function Header() {
                                 <li className="nav-item">
                                     <Link to="/recipes">Recipes</Link>
                                 </li>
-                                {/* <li className="nav-item">
-                                    <Link to="/favourite">Favourite</Link>
-                                </li> */}
+
+                                {isAuthenticated && (
+                                    <li className="nav-item">
+                                        <Link to="/favourite">Favourite</Link>
+                                    </li>
+                                )}
+
                             </ul>
                             <ul className="right-nav">
-                                <li className="nav-item">
-                                    <Link to="/login">Login</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/register">Register</Link>
-                                </li>
-                                {/* <li className="nav-item">
-                                    <Link to="/recipes/add">Add</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/my">My Recipes</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/logout">Logout</Link>
-                                </li> */}
+
+                                {!isAuthenticated && (
+                                    <>
+                                        <li className="nav-item">
+                                            <Link to="/login">Login</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link to="/register">Register</Link>
+                                        </li>
+                                    </>
+                                )}
+
+                                {isAuthenticated && (
+                                    <>
+                                        <li className="nav-item">
+                                            <Link to="/recipes/add">Add</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link to="/my">My Recipes</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link to="/logout">Logout</Link>
+                                        </li>
+                                    </>
+                                )}
+
                             </ul>
                         </div>
                     </div>

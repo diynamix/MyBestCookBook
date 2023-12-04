@@ -16,24 +16,43 @@ import Register from './components/register/Register';
 
 function App() {
     const navigate = useNavigate();
-    const [auth, setAuth] = useState();
+    const [auth, setAuth] = useState({});
 
     const loginSubmitHandler = async (values) => {
         const result = await authService.login(values.email, values.password);
-
+        
         setAuth(result);
-
+        
         navigate(Path.Home);
     };
 
+    const registerSubmitHandler = async (values) => {
+        if (values.password !== values.confirmPassword) return;
+
+        const result = await authService.register(values.email, values.password, values.username);
+        
+        setAuth(result);
+        
+        navigate(Path.Home);
+    };
+    
+    const values = {
+        loginSubmitHandler,
+        registerSubmitHandler,
+        isAuthenticated: !!auth.email,
+        userId: auth['_id'],
+        email: auth.email,
+        username: auth.username || auth.email,
+    };
+
     return (
-        <AuthContext.Provider value={{loginSubmitHandler}}>
+        <AuthContext.Provider value={values}>
         <>
             <Header />
             
             <main className="divider">
                 <Routes>
-                    <Route path='/' element={<Home />} />
+                    <Route path={Path.Home} element={<Home />} />
                     <Route path='/recipes' element={<RecipeList />} />
                     <Route path='/recipes/add' element={<RecipeAdd />} />
                     <Route path='/recipes/:recipeId' element={<RecipeDetails />} />

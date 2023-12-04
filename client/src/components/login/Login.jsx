@@ -40,7 +40,8 @@ export default function Login() {
                                 className="form-control"
                                 placeholder="example@you.com"
                                 value={formValues[LoginFormKeys.Email]}
-                                onChange={onChange} />
+                                onChange={onChange}
+                                required />
                         </div>
 
                         <div className="form-group">
@@ -52,7 +53,8 @@ export default function Login() {
                                 className="form-control"
                                 placeholder="Password"
                                 value={formValues[LoginFormKeys.Password]}
-                                onChange={onChange} />
+                                onChange={onChange}
+                                required />
                         </div>
 
                         <div>
