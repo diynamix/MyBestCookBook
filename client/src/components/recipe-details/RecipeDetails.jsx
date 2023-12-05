@@ -22,11 +22,6 @@ export default function RecipeDetails() {
         //     .then(setLikes);
     }, [recipeId]);
 
-    let ownerUsername = '';
-    if (recipe.owner && recipe?.owner?.username) {
-        ownerUsername = recipe.owner.username;
-    }
-
     // let isLiked = likeService.isLikedByUser(userId, recipeId);
     
     // const likeHandler = async (e) => {
@@ -47,7 +42,17 @@ export default function RecipeDetails() {
 
     return(
         <div className="content-wrap recipe-details">
-            <Link to='/recipes' className="link">&lt;&lt;Back</Link>
+            <div className="recipe-details-links">
+                <Link to='/recipes' className="link">All recipes</Link>
+                {!isUserOwner && (
+                    <Link
+                        to={pathToUrl(Path.RecipeListByUser, { userId: recipe._ownerId})}
+                        state={{ userId: recipe._ownerId, username: recipe?.owner?.username }}
+                        className="author-link">
+                        Authors's recipes
+                    </Link>
+                )}
+            </div>
 
             <h2 className="page-title divider">{recipe.name}</h2>
 
@@ -74,8 +79,14 @@ export default function RecipeDetails() {
                         </div>
                         <div className="recipe-creator recipe-details-creator">
                             {(isUserOwner)
-                                ? <><Link to={`/recipes`}>My other recipes</Link></>
-                                : <>By <Link to={`/recipes/${recipe['_id']}`}>{ownerUsername}</Link></>
+                                ? <><Link to={`/recipes/my`}>My other recipes</Link></>
+                                : <>
+                                    By <Link
+                                        to={pathToUrl(Path.RecipeListByUser, { userId: recipe._ownerId})}
+                                        state={{ userId: recipe._ownerId, username: recipe?.owner?.username }}>
+                                            {recipe?.owner?.username}
+                                        </Link>
+                                </>
                             }
                         </div>
                     </div>
@@ -98,7 +109,7 @@ export default function RecipeDetails() {
                 </div>
             </div>
 
-            <Link to='/recipes' className="link">&lt;&lt;Back</Link>
+            <Link to='/recipes' className="link">All recipes</Link>
         </div>
     );
 };

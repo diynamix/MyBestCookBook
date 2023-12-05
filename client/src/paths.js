@@ -1,10 +1,11 @@
 const Path = {
     Home: '/',
     RecipeList: '/recipes',
-    RecipeAdd: '/recipes/add',
+    RecipeListMy: '/recipes/my',
+    RecipeListByUser: '/recipes/by/:userId',
     RecipeDetails: '/recipes/:recipeId',
+    RecipeAdd: '/recipes/add',
     RecipeEdit: '/recipes/:recipeId/edit',
-    RecipeMy: '/recipes/my',
     RecipeDelete: '/recipes/:recipeId/delete',
     Login: '/login',
     Register: '/register',

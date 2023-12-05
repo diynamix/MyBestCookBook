@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import * as recipeService from "../../services/recipeService";
-import AuthContext from "../../contexts/authContext";
 
 import RecipeListItem from "../recipe-list-item/RecipeListItem";
 
-export default function RecipeMy() {
+export default function RecipeByUser() {
     const navigate = useNavigate();
     const [recipes, setRecipes] = useState([]);
-    const { userId, username } = useContext(AuthContext);
+    const location = useLocation();
+    const {userId, username} = location.state;
 
     useEffect(() => {
         recipeService.getAllByUserId(userId)

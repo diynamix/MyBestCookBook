@@ -174,7 +174,7 @@ export default function RecipeEdit() {
                         </div>
 
                         <div>
-                            <button type="submit" className="button sbm-btn">Add recipe</button>
+                            <button type="submit" className="button sbm-btn">Edit recipe</button>
                             {/* <button type="button" onClick={resetFormHandler} className="button sbm-btn">Reset</button> */}
                         </div>
 
