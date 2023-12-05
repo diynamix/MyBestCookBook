@@ -15,7 +15,7 @@ export default function RecipeDetails() {
     const isUserOwner = userId === recipe['_ownerId'];
     
     useEffect(() => {
-        recipeService.getById(recipeId)
+        recipeService.getByRecipeId(recipeId)
             .then(setRecipe);
 
         // likeService.allLikesByRecipeId(recipeId)

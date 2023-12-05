@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import AuthContext from "../../../contexts/authContext";
+import AuthContext from "../../contexts/authContext";
 
 export default function RecipeListItem(recipe) {
     const { userId } = useContext(AuthContext);

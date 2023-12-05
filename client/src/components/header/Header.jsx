@@ -52,7 +52,7 @@ export default function Header() {
                                             <Link to="/recipes/add">Add</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link to="/my">My Recipes</Link>
+                                            <Link to="/recipes/my">My Recipes</Link>
                                         </li>
                                         <li className="nav-item">
                                             <Link to="/logout">Logout</Link>

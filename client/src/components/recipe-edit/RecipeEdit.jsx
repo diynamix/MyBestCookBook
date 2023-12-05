@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import * as recipeService from "../../services/recipeService";
-import useForm from "../../hooks/useForm";
 
 const FormKeys = {
     Name: 'name',
@@ -38,7 +37,7 @@ export default function RecipeEdit() {
 
     
     useEffect(() => {
-        recipeService.getById(recipeId)
+        recipeService.getByRecipeId(recipeId)
             .then(result => {
                 setRecipe(result);
             });

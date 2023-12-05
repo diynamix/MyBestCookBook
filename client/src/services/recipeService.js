@@ -12,7 +12,17 @@ export const getAll = async () => {
     return result;
 };
 
-export const getById = async (recipeId) => {
+export const getAllByUserId = async (userId) => {
+    const query = new URLSearchParams({
+        where: `_ownerId="${userId}"`,
+    });
+
+    const result = await request.get(`${baseUrl}?${query}`);
+
+    return result;
+};
+
+export const getByRecipeId = async (recipeId) => {
     const query = new URLSearchParams({
         load: `owner=_ownerId:users`,
     });
