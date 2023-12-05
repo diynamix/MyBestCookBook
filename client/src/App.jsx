@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import * as authService from './services/authService';
-import AuthContext from './contexts/authContext';
+import { AuthProvider } from './contexts/authContext';
 import Path from './paths';
 
 import Footer from "./components/footer/Footer";
@@ -30,7 +30,7 @@ function App() {
 
         localStorage.setItem('accessToken', result.accessToken);
         
-        navigate(Path.Home);
+        navigate(Path.RecipeList);
     };
     
     const registerSubmitHandler = async (values) => {
@@ -42,7 +42,7 @@ function App() {
 
         localStorage.setItem('accessToken', result.accessToken);
         
-        navigate(Path.Home);
+        navigate(Path.RecipeList);
     };
 
     const logoutHandler = () => {
@@ -63,7 +63,7 @@ function App() {
     };
 
     return (
-        <AuthContext.Provider value={values}>
+        <AuthProvider value={values}>
         <>
             <Header />
             
@@ -81,7 +81,7 @@ function App() {
 
             <Footer />
         </>
-        </AuthContext.Provider>
+        </AuthProvider>
     )
 }
 

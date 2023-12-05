@@ -61,7 +61,7 @@ export default function RecipeDetails() {
                     <div className="recipe-details-rate-creator">
                         <div className="recipe-rate recipe-details-rate">
                             {(userId && !isUserOwner)
-                                ? <form onSubmit={likeHandler}>
+                                ? <form>
                                     <button
                                         type="submit"
                                         className="btn-unset">
