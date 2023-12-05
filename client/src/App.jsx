@@ -29,16 +29,18 @@ function App() {
         setAuth(result);
 
         localStorage.setItem('accessToken', result.accessToken);
-
+        
         navigate(Path.Home);
     };
-
+    
     const registerSubmitHandler = async (values) => {
         if (values.password !== values.confirmPassword) return;
-
+        
         const result = await authService.register(values.email, values.password, values.username);
         
         setAuth(result);
+
+        localStorage.setItem('accessToken', result.accessToken);
         
         navigate(Path.Home);
     };
@@ -68,11 +70,11 @@ function App() {
             <main className="divider">
                 <Routes>
                     <Route path={Path.Home} element={<Home />} />
-                    <Route path='/recipes' element={<RecipeList />} />
-                    <Route path='/recipes/add' element={<RecipeAdd />} />
-                    <Route path='/recipes/:recipeId' element={<RecipeDetails />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/register' element={<Register />} />
+                    <Route path={Path.RecipeList} element={<RecipeList />} />
+                    <Route path={Path.RecipeAdd} element={<RecipeAdd />} />
+                    <Route path={Path.RecipeDetails} element={<RecipeDetails />} />
+                    <Route path={Path.Login} element={<Login />} />
+                    <Route path={Path.Register} element={<Register />} />
                     <Route path={Path.Logout} element={<Logout />} />
                 </Routes>
             </main>

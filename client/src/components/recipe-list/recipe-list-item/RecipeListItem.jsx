@@ -1,28 +1,35 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-export default function RecipeListItem({
-    _id,
-    name,
-    imageUrl,
-    username,
-    likes
-}) {
+import AuthContext from "../../../contexts/authContext";
+
+export default function RecipeListItem(recipe) {
+    const { userId } = useContext(AuthContext);
+
+    const isUserOwner = userId === recipe['_ownerId'];
+
     return (
         <div className="recipe-box">
-            <div className="recipe-img">
-                <Link to={`/recipes/${_id}`}>
-                    <img src={imageUrl} />
+            <div className="recipe-img-container">
+                <Link to={`/recipes/${recipe['_id']}`}>
+                    <img src={recipe.imageUrl} />
                 </Link>
             </div>
             <div className="recipe-info">
                 <div className="recipe-name">
-                    <Link to={`/recipes/${_id}`}>{name}</Link>
+                    <Link to={`/recipes/${recipe['_id']}`}>{recipe.name}</Link>
                 </div>
-                {/* <div className="recipe-rate">
-                    <button className="btn-unset"><i className="fas fa-heart"></i> {likes}</button>
-                </div> */}
+                <div className="recipe-rate">
+                    {(userId && !isUserOwner)
+                        ? <button className="btn-unset"><i className="fas fa-heart"></i> 99</button>
+                        : <><i className="fas fa-heart"></i> 99</>
+                    }
+                </div>
                 <div className="recipe-creator">
-                    By <Link to={`/recipes/${_id}`}>{username}</Link>
+                    {(isUserOwner)
+                        ? <><Link to={`/recipes/my`}>My recipes</Link></>
+                        : <>By <Link to={`/recipes/${recipe['_id']}`}>{recipe.owner.username}</Link></>
+                    }
                 </div>
             </div>
         </div>
