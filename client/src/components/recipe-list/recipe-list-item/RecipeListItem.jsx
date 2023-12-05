@@ -19,12 +19,18 @@ export default function RecipeListItem(recipe) {
                 <div className="recipe-name">
                     <Link to={`/recipes/${recipe['_id']}`}>{recipe.name}</Link>
                 </div>
-                <div className="recipe-rate">
+                {/* <div className="recipe-rate">
                     {(userId && !isUserOwner)
-                        ? <button className="btn-unset"><i className="fas fa-heart"></i> 99</button>
+                        ? <form onSubmit={likeHandler}>
+                            <button
+                                type="submit"
+                                className="btn-unset">
+                                    <i className="fas fa-heart"></i> 99
+                            </button>
+                        </form> 
                         : <><i className="fas fa-heart"></i> 99</>
                     }
-                </div>
+                </div> */}
                 <div className="recipe-creator">
                     {(isUserOwner)
                         ? <><Link to={`/recipes/my`}>My recipes</Link></>

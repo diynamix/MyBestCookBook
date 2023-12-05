@@ -2,24 +2,47 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import * as recipeService from '../../services/recipeService';
+import * as likeService from '../../services/likeService';
 import AuthContext from "../../contexts/authContext";
 
 export default function RecipeDetails() {
     const [recipe, setRecipe] = useState({});
+    // const [likes, setLikes] = useState(0);
     const { recipeId } = useParams();
     
     useEffect(() => {
         recipeService.getById(recipeId)
-        .then(setRecipe);
+            .then(setRecipe);
+
+        // likeService.allLikesByRecipeId(recipeId)
+        //     .then(setLikes);
     }, [recipeId]);
     
     const {userId} = useContext(AuthContext);
     const isUserOwner = userId === recipe['_ownerId'];
-    let ownerUsername = '';
 
+    let ownerUsername = '';
     if (recipe.owner && recipe.owner.username) {
         ownerUsername = recipe.owner.username;
     }
+
+    // let isLiked = likeService.isLikedByUser(userId, recipeId);
+    
+    // const likeHandler = async (e) => {
+    //     e.preventDefault();
+
+    //     if (!userId || isUserOwner) return;
+
+    //     try {
+    //         const newLike = await likeService.like(recipeId);
+
+    //         const allLikes = await likeService.allLikesByRecipeId(recipeId);
+
+    //         setLikes(likes => allLikes);
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
 
     return(
         <div className="content-wrap recipe-details">
@@ -38,8 +61,14 @@ export default function RecipeDetails() {
                     <div className="recipe-details-rate-creator">
                         <div className="recipe-rate recipe-details-rate">
                             {(userId && !isUserOwner)
-                                ? <button className="btn-unset"><i className="fas fa-heart"></i> 99</button>
-                                : <><i className="fas fa-heart"></i> 99</>
+                                ? <form onSubmit={likeHandler}>
+                                    <button
+                                        type="submit"
+                                        className="btn-unset">
+                                            <i className="fas fa-heart"></i> {99}
+                                    </button>
+                                </form> 
+                                : <><i className="fas fa-heart"></i> {99}</>
                             }
                         </div>
                         <div className="recipe-creator recipe-details-creator">
