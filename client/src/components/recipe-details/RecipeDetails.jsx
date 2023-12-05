@@ -2,13 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import * as recipeService from '../../services/recipeService';
-import * as likeService from '../../services/likeService';
+// import * as likeService from '../../services/likeService';
 import AuthContext from "../../contexts/authContext";
+import Path from "../../paths";
+import { pathToUrl } from "../../utils/pathUtils";
 
 export default function RecipeDetails() {
     const [recipe, setRecipe] = useState({});
     // const [likes, setLikes] = useState(0);
     const { recipeId } = useParams();
+    const {userId} = useContext(AuthContext);
+    const isUserOwner = userId === recipe['_ownerId'];
     
     useEffect(() => {
         recipeService.getById(recipeId)
@@ -17,12 +21,9 @@ export default function RecipeDetails() {
         // likeService.allLikesByRecipeId(recipeId)
         //     .then(setLikes);
     }, [recipeId]);
-    
-    const {userId} = useContext(AuthContext);
-    const isUserOwner = userId === recipe['_ownerId'];
 
     let ownerUsername = '';
-    if (recipe.owner && recipe.owner.username) {
+    if (recipe.owner && recipe?.owner?.username) {
         ownerUsername = recipe.owner.username;
     }
 
@@ -90,8 +91,8 @@ export default function RecipeDetails() {
                     </div>
                     {isUserOwner && (
                         <div className="recipe-details-btns">
-                            <a className="edit-btn green-btn button">Edit</a>
-                            <a className="delete-btn danger-btn button">Delete</a>
+                            <Link to={pathToUrl(Path.RecipeEdit, {recipeId})} className="edit-btn green-btn button">Edit</Link>
+                            <Link to="/recipes/:recipeId/delete" className="delete-btn danger-btn button">Delete</Link>
                         </div>
                     )}
                 </div>

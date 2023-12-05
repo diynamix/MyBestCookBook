@@ -1,7 +1,5 @@
-import { useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-import * as authService from './services/authService';
 import { AuthProvider } from './contexts/authContext';
 import Path from './paths';
 
@@ -14,56 +12,11 @@ import RecipeDetails from './components/recipe-details/RecipeDetails';
 import RecipeList from './components/recipe-list/RecipeList';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
+import RecipeEdit from './components/recipeEdit/RecipeEdit';
 
 function App() {
-    const navigate = useNavigate();
-    const [auth, setAuth] = useState(() => {
-        localStorage.removeItem('accessToken');
-
-        return {};
-    });
-
-    const loginSubmitHandler = async (values) => {
-        const result = await authService.login(values.email, values.password);
-        
-        setAuth(result);
-
-        localStorage.setItem('accessToken', result.accessToken);
-        
-        navigate(Path.RecipeList);
-    };
-    
-    const registerSubmitHandler = async (values) => {
-        if (values.password !== values.confirmPassword) return;
-        
-        const result = await authService.register(values.email, values.password, values.username);
-        
-        setAuth(result);
-
-        localStorage.setItem('accessToken', result.accessToken);
-        
-        navigate(Path.RecipeList);
-    };
-
-    const logoutHandler = () => {
-        setAuth({});
-
-        localStorage.removeItem('accessToken');
-        // navigate(Path.Home);
-    };
-    
-    const values = {
-        loginSubmitHandler,
-        registerSubmitHandler,
-        logoutHandler,
-        isAuthenticated: !!auth.email,
-        userId: auth['_id'],
-        email: auth.email,
-        username: auth.username || auth.email,
-    };
-
     return (
-        <AuthProvider value={values}>
+        <AuthProvider>
         <>
             <Header />
             
@@ -73,6 +26,7 @@ function App() {
                     <Route path={Path.RecipeList} element={<RecipeList />} />
                     <Route path={Path.RecipeAdd} element={<RecipeAdd />} />
                     <Route path={Path.RecipeDetails} element={<RecipeDetails />} />
+                    <Route path={Path.RecipeEdit} element={<RecipeEdit />} />
                     <Route path={Path.Login} element={<Login />} />
                     <Route path={Path.Register} element={<Register />} />
                     <Route path={Path.Logout} element={<Logout />} />

@@ -213,6 +213,10 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
+    /* ********** GLOBAL ********** */
+    html {
+        font-size: 16px;
+    }
 
     /* ********** NAVIGATION ********** */
     .logo,

@@ -49,13 +49,16 @@
         text-decoration: underline;
     }
 
+.recipe-creator {
+    font-style: italic;
+}
+
 .recipe-creator a {
     color: #000000;
     text-decoration: none;
 }
 
 .recipe-creator a:hover {
-    font-style: italic;
     text-decoration: underline;
 }
 

@@ -49,10 +49,6 @@
     margin-right: 2px;
 }
 
-.recipe-details-creator {
-    font-style: italic;
-}
-
 .recipe-details-creator a {
     text-decoration: underline;
 }
@@ -99,6 +95,7 @@
 
 
 @media screen and (max-width: 600px) {
+
     .recipe-details-name {
         font-size: 1.2rem;
     }

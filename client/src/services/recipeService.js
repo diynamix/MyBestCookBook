@@ -27,3 +27,9 @@ export const add = async (recipeData) => {
 
     return result;
 };
+
+export const edit = async (recipeId, recipeData) => {
+    const result = await request.put(`${baseUrl}/${recipeId}`, recipeData);
+
+    return result;
+};
