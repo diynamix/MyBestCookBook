@@ -6,7 +6,6 @@ const Path = {
     RecipeDetails: '/recipes/:recipeId',
     RecipeAdd: '/recipes/add',
     RecipeEdit: '/recipes/:recipeId/edit',
-    RecipeDelete: '/recipes/:recipeId/delete',
     Login: '/login',
     Register: '/register',
     Logout: '/logout',

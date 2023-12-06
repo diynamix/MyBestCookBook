@@ -44,3 +44,5 @@ export const edit = async (recipeId, recipeData) => {
 
     return result;
 };
+
+export const remove = async (recipeId) => request.remove(`${baseUrl}/${recipeId}`);

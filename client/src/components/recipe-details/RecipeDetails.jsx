@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import * as recipeService from '../../services/recipeService';
 // import * as likeService from '../../services/likeService';
@@ -8,6 +8,7 @@ import Path from "../../paths";
 import { pathToUrl } from "../../utils/pathUtils";
 
 export default function RecipeDetails() {
+    const navigate = useNavigate();
     const [recipe, setRecipe] = useState({});
     // const [likes, setLikes] = useState(0);
     const { recipeId } = useParams();
@@ -21,6 +22,16 @@ export default function RecipeDetails() {
         // likeService.allLikesByRecipeId(recipeId)
         //     .then(setLikes);
     }, [recipeId]);
+
+    const deleteButtonClickHandler = async () => {
+        const hasConfirmed = confirm(`Are you sure you want to delete ${recipe.name}`);
+
+        if (hasConfirmed) {
+            await recipeService.remove(recipeId);
+
+            navigate(Path.RecipeList);
+        }
+    }
 
     // let isLiked = likeService.isLikedByUser(userId, recipeId);
     
@@ -67,13 +78,11 @@ export default function RecipeDetails() {
                     <div className="recipe-details-rate-creator">
                         <div className="recipe-rate recipe-details-rate">
                             {(userId && !isOwner)
-                                ? <form>
-                                    <button
-                                        type="submit"
-                                        className="btn-unset">
-                                            <i className="fas fa-heart"></i> {99}
-                                    </button>
-                                </form> 
+                                ? <button
+                                    type="submit"
+                                    className="btn-unset">
+                                        <i className="fas fa-heart"></i> {99}
+                                </button>
                                 : <><i className="fas fa-heart"></i> {99}</>
                             }
                         </div>
@@ -103,7 +112,7 @@ export default function RecipeDetails() {
                     {isOwner && (
                         <div className="recipe-details-btns">
                             <Link to={pathToUrl(Path.RecipeEdit, {recipeId})} className="edit-btn green-btn button">Edit</Link>
-                            <Link to="" className="delete-btn danger-btn button">Delete</Link>
+                            <button onClick={deleteButtonClickHandler} className="delete-btn danger-btn button">Delete</button>
                         </div>
                     )}
                 </div>
