@@ -176,6 +176,10 @@ footer {
         color: #5E5E5E;
     }
 
+    footer a:hover {
+        color: #5E5E5E;
+    }
+
 
 /* Responsive
 -------------------------------------------------- */

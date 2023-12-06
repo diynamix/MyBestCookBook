@@ -2,7 +2,7 @@ const Path = {
     Home: '/',
     RecipeList: '/recipes',
     RecipeListMy: '/recipes/my',
-    RecipeListByUser: '/recipes/by/:userId',
+    RecipeListByUser: '/recipes/by/:ownerId',
     RecipeDetails: '/recipes/:recipeId',
     RecipeAdd: '/recipes/add',
     RecipeEdit: '/recipes/:recipeId/edit',

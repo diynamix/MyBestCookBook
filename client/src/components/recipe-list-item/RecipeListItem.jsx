@@ -38,8 +38,8 @@ export default function RecipeListItem(recipe) {
                         ? <><Link to={`/recipes/my`}>My recipes</Link></>
                         : <>
                             By <Link
-                                to={pathToUrl(Path.RecipeListByUser, { userId: recipe._ownerId})}
-                                state={{ userId: recipe._ownerId, username: recipe?.owner?.username }}>
+                                to={pathToUrl(Path.RecipeListByUser, { ownerId: recipe._ownerId})}
+                                state={{ ownerId: recipe._ownerId, ownerName: recipe?.owner?.username }}>
                                     {recipe?.owner?.username}
                                 </Link>
                         </>

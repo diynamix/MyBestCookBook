@@ -9,17 +9,17 @@ export default function RecipeByUser() {
     const navigate = useNavigate();
     const [recipes, setRecipes] = useState([]);
     const location = useLocation();
-    const {userId, username} = location.state;
+    const {ownerId, ownerName} = location.state;
 
     useEffect(() => {
-        recipeService.getAllByUserId(userId)
+        recipeService.getAllByUserId(ownerId)
             .then(result => setRecipes(result));
-            if (!userId) navigate('/recipes'); 
+            if (!ownerId) navigate('/recipes');
     }, []);
 
     return (
         <div className="content-wrap">
-            <h2 className="divider">{username}'s Recipes</h2>
+            <h2 className="divider">{ownerName}'s Recipes</h2>
 
             <section className="recipe-list">
 
