@@ -15,6 +15,7 @@ import Logout from './components/logout/Logout';
 import RecipeEdit from './components/recipe-edit/RecipeEdit';
 import RecipeMy from './components/recipe-my/RecipeMy';
 import RecipeByUser from './components/recipe-by-user/RecipeByUser';
+import AuthGuard from './components/guards/AuthGuard';
 
 function App() {
     return (
@@ -26,14 +27,17 @@ function App() {
                 <Routes>
                     <Route path={Path.Home} element={<Home />} />
                     <Route path={Path.RecipeList} element={<RecipeList />} />
-                    <Route path={Path.RecipeAdd} element={<RecipeAdd />} />
                     <Route path={Path.RecipeDetails} element={<RecipeDetails />} />
-                    <Route path={Path.RecipeEdit} element={<RecipeEdit />} />
-                    <Route path={Path.RecipeListMy} element={<RecipeMy />} />
                     <Route path={Path.RecipeListByUser} element={<RecipeByUser />} />
                     <Route path={Path.Login} element={<Login />} />
                     <Route path={Path.Register} element={<Register />} />
-                    <Route path={Path.Logout} element={<Logout />} />
+
+                    <Route element={<AuthGuard />}>
+                        <Route path={Path.RecipeAdd} element={<RecipeAdd />} />
+                        <Route path={Path.RecipeEdit} element={<RecipeEdit />} />
+                        <Route path={Path.RecipeListMy} element={<RecipeMy />} />
+                        <Route path={Path.Logout} element={<Logout />} />
+                    </Route>
                 </Routes>
             </main>
 
