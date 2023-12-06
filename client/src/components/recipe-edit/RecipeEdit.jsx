@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Path from "../../paths";
 
 import * as recipeService from "../../services/recipeService";
+import { pathToUrl } from "../../utils/pathUtils";
 
 const FormKeys = {
     Name: 'name',
@@ -63,7 +65,7 @@ export default function RecipeEdit() {
         try {
             await recipeService.edit(recipeId, recipe);
             
-            navigate(`/recipes/${recipeId}`);
+            navigate(pathToUrl(Path.RecipeDetails, { recipeId }));
         } catch (error) {
             // Notification
             console.log(error);

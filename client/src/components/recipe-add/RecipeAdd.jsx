@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Path from "../../paths";
 
 import * as recipeService from "../../services/recipeService";
 
@@ -53,7 +54,7 @@ export default function RecipeAdd() {
         
         try {
             await recipeService.add(formValues);
-            navigate('/recipes');
+            navigate(Path.RecipeList);
         } catch (error) {
             // Notification
             console.log(error);

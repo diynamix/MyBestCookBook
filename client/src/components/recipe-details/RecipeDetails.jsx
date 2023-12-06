@@ -12,7 +12,7 @@ export default function RecipeDetails() {
     // const [likes, setLikes] = useState(0);
     const { recipeId } = useParams();
     const {userId} = useContext(AuthContext);
-    const isUserOwner = userId === recipe['_ownerId'];
+    const isOwner = userId === recipe._ownerId;
     
     useEffect(() => {
         recipeService.getByRecipeId(recipeId)
@@ -43,16 +43,14 @@ export default function RecipeDetails() {
     return(
         <div className="content-wrap recipe-details">
             <div className="recipe-details-links">
-                <Link to='/recipes' className="link">All recipes</Link>
-                {!isUserOwner && (
+                <Link to={Path.RecipeList} className="link">All recipes</Link>
+                {!isOwner && (
                     <Link
                         to={pathToUrl(Path.RecipeListByUser, { ownerId: recipe._ownerId})}
                         state={{ ownerId: recipe._ownerId, ownerName: recipe?.owner?.username }}
                         className="author-link">
                             Authors's recipes
-                    </Link>
-
-                    
+                    </Link>                    
                 )}
             </div>
 
@@ -68,7 +66,7 @@ export default function RecipeDetails() {
                     </div>
                     <div className="recipe-details-rate-creator">
                         <div className="recipe-rate recipe-details-rate">
-                            {(userId && !isUserOwner)
+                            {(userId && !isOwner)
                                 ? <form>
                                     <button
                                         type="submit"
@@ -80,8 +78,8 @@ export default function RecipeDetails() {
                             }
                         </div>
                         <div className="recipe-creator recipe-details-creator">
-                            {(isUserOwner)
-                                ? <><Link to={`/recipes/my`}>My other recipes</Link></>
+                            {(isOwner)
+                                ? <><Link to={Path.RecipeListMy}>My other recipes</Link></>
                                 : <>
                                     By <Link
                                         to={pathToUrl(Path.RecipeListByUser, { ownerId: recipe._ownerId})}
@@ -102,16 +100,16 @@ export default function RecipeDetails() {
                         <br />
                         {recipe.steps}
                     </div>
-                    {isUserOwner && (
+                    {isOwner && (
                         <div className="recipe-details-btns">
                             <Link to={pathToUrl(Path.RecipeEdit, {recipeId})} className="edit-btn green-btn button">Edit</Link>
-                            <Link to="/recipes/:recipeId/delete" className="delete-btn danger-btn button">Delete</Link>
+                            <Link to="" className="delete-btn danger-btn button">Delete</Link>
                         </div>
                     )}
                 </div>
             </div>
 
-            <Link to='/recipes' className="link">All recipes</Link>
+            <Link to={Path.RecipeList} className="link">All recipes</Link>
         </div>
     );
 };

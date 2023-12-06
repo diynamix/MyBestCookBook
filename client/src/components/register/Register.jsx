@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 
 import AuthContext from "../../contexts/authContext";
 import useForm from "../../hooks/useForm";
+import Path from "../../paths";
 
 const RegisterFormKeys = {
     Email: 'email',
@@ -87,7 +88,7 @@ export default function Register() {
                         </div>
                     </fieldset>
 
-                    <div className="login-register-switch">Already registered? Go to <Link to="/login" className="link">login</Link>.</div>
+                    <div className="login-register-switch">Already registered? Go to <Link to={Path.Login} className="link">login</Link>.</div>
                 </form>
 
             </section>

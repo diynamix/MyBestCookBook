@@ -8,18 +8,18 @@ import { pathToUrl } from "../../utils/pathUtils";
 export default function RecipeListItem(recipe) {
     const { userId } = useContext(AuthContext);
 
-    const isUserOwner = userId === recipe['_ownerId'];
+    const isOwner = userId === recipe['_ownerId'];
 
     return (
         <div className="recipe-box">
             <div className="recipe-img-container">
-                <Link to={`/recipes/${recipe._id}`}>
+                <Link to={pathToUrl(Path.RecipeDetails, { recipeId: recipe._id, })}>
                     <img src={recipe.imageUrl} />
                 </Link>
             </div>
             <div className="recipe-info">
                 <div className="recipe-name">
-                    <Link to={`/recipes/${recipe._id}`}>{recipe.name}</Link>
+                    <Link to={pathToUrl(Path.RecipeDetails, { recipeId: recipe._id, })}>{recipe.name}</Link>
                 </div>
                 {/* <div className="recipe-rate">
                     {(userId && !isUserOwner)
@@ -34,8 +34,8 @@ export default function RecipeListItem(recipe) {
                     }
                 </div> */}
                 <div className="recipe-creator">
-                    {(isUserOwner)
-                        ? <><Link to={`/recipes/my`}>My recipes</Link></>
+                    {(isOwner)
+                        ? <><Link to={Path.RecipeListMy}>My recipes</Link></>
                         : <>
                             By <Link
                                 to={pathToUrl(Path.RecipeListByUser, { ownerId: recipe._ownerId})}

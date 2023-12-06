@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import AuthContext from '../../contexts/authContext';
+import Path from '../../paths';
 
 export default function Header() {
     const {
@@ -14,21 +15,21 @@ export default function Header() {
                 <nav>
                     <div className="navigation">
                         <div className="logo">
-                            <Link to="/"><h1>My Best Cook Book</h1></Link>
+                            <Link to={Path.Home}><h1>My Best Cook Book</h1></Link>
                         </div>
 
                         <div className="nav-bar">
                             <ul className="left-nav">
                                 <li className="nav-item">
-                                    <Link to="/">Home</Link>
+                                    <Link to={Path.Home}>Home</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/recipes">Recipes</Link>
+                                    <Link to={Path.RecipeList}>Recipes</Link>
                                 </li>
 
                                 {isAuthenticated && (
                                     <li className="nav-item">
-                                        <Link to="/favourite">Favourite</Link>
+                                        <Link to="">Favourite</Link>
                                     </li>
                                 )}
 
@@ -38,10 +39,10 @@ export default function Header() {
                                 {!isAuthenticated && (
                                     <>
                                         <li className="nav-item">
-                                            <Link to="/login">Login</Link>
+                                            <Link to={Path.Login}>Login</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link to="/register">Register</Link>
+                                            <Link to={Path.Register}>Register</Link>
                                         </li>
                                     </>
                                 )}
@@ -49,13 +50,13 @@ export default function Header() {
                                 {isAuthenticated && (
                                     <>
                                         <li className="nav-item">
-                                            <Link to="/recipes/add">Add</Link>
+                                            <Link to={Path.RecipeAdd}>Add</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link to="/recipes/my">My Recipes</Link>
+                                            <Link to={Path.RecipeListMy}>My Recipes</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link to="/logout">Logout</Link>
+                                            <Link to={Path.Logout}>Logout</Link>
                                         </li>
                                     </>
                                 )}

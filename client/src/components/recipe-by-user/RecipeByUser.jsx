@@ -14,7 +14,7 @@ export default function RecipeByUser() {
     useEffect(() => {
         recipeService.getAllByUserId(ownerId)
             .then(result => setRecipes(result));
-            if (!ownerId) navigate('/recipes');
+            // if (!ownerId) navigate('/recipes');
     }, []);
 
     return (
