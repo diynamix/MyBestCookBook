@@ -21,7 +21,7 @@ export default function RecipeListItem(recipe) {
                 <div className="recipe-name">
                     <Link to={pathToUrl(Path.RecipeDetails, { recipeId: recipe._id, })}>{recipe.name}</Link>
                 </div>
-                {/* <div className="recipe-rate">
+                {/* <div className="recipe-like">
                     {(userId && !isUserOwner)
                         ? <form onSubmit={likeHandler}>
                             <button

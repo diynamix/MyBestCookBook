@@ -35,24 +35,28 @@
 }
 
 
-/* recipe details rate & creator */
+/* recipe details - like & creator */
 
-.recipe-details-rate-creator {
+.recipe-details-like-creator {
     display: flex;
     font-size: 0.9rem;
     margin-bottom: 30px;
 }
 
-.recipe-details-rate, .recipe-details-creator {
+.recipe-details-like, .recipe-details-creator {
     display: inline-block;
 }
 
-.recipe-details-rate {
+.recipe-details-like {
     margin: 0 20px 0 0;
 }
 
-.recipe-details-rate i {
+.recipe-details-like i {
     margin-right: 2px;
+}
+
+.liked {
+    color: #C08497 !important;
 }
 
 .recipe-details-creator a {

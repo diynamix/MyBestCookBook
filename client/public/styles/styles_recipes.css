@@ -62,7 +62,7 @@
     text-decoration: underline;
 }
 
-.recipe-rate {
+.recipe-like {
     font-size: 16px;
     font-style: italic;
     align-self: center;
@@ -70,11 +70,11 @@
     margin-bottom: 20px;
 }
 
-.recipe-rate button {
+.recipe-like button {
     color: #87ACB0;
 }
 
-.recipe-rate button:hover {
+.recipe-like button:hover {
     color: #C08497;
 }
 

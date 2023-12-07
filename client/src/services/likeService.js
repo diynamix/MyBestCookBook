@@ -8,18 +8,33 @@ export const like = async (recipeId) => {
     return newLike;
 }
 
-// export const isLikedByUser = async (userId, recipeId) => {
-//     const query = new URLSearchParams({
-//         where: `_ownerId="${userId}"`,
-//     });
+export const unlike = async (likeId) => request.remove(`${baseUrl}/${likeId}`);
 
-//     const result = await request.get(`${baseUrl}?${query}&count`);
+export const isLikedByUser = async (userId, recipeId) => {
+    const query = new URLSearchParams({
+        where: `recipeId="${recipeId}"`,
+    });
 
-//     const isLiked = result.;
-//     console.log('number: ' + result);
-//     console.log('bool: ' + isLiked);
-//     return isLiked;
-// }
+    const result = await request.get(`${baseUrl}?${query}`);
+
+    const isLiked = result.some(like => like?._ownerId === userId);
+
+    return isLiked;
+}
+
+export const getLikeId = async (userId, recipeId) => {
+    const query = new URLSearchParams({
+        where: `recipeId="${recipeId}"`,
+    });
+
+    const result = await request.get(`${baseUrl}?${query}`);
+
+    const like = result.find(like => like?._ownerId === userId);
+
+    const likeId = like?._id;
+
+    return likeId;
+}
 
 export const allLikesByRecipeId = async (recipeId) => {
     const query = new URLSearchParams({

@@ -2,27 +2,35 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import * as recipeService from '../../services/recipeService';
-// import * as likeService from '../../services/likeService';
+import * as likeService from '../../services/likeService';
 import AuthContext from "../../contexts/authContext";
 import Path from "../../paths";
 import { pathToUrl } from "../../utils/pathUtils";
 
 export default function RecipeDetails() {
     const navigate = useNavigate();
+
     const [recipe, setRecipe] = useState({});
-    // const [likes, setLikes] = useState(0);
+    
+    const [likes, setLikes] = useState(0);
+    const [likeId, setLikeId] = useState('');
+    
     const { recipeId } = useParams();
     const {userId} = useContext(AuthContext);
+
     const isOwner = userId === recipe._ownerId;
-    
+
     useEffect(() => {
         recipeService.getByRecipeId(recipeId)
-            .then(setRecipe);
-
-        // likeService.allLikesByRecipeId(recipeId)
-        //     .then(setLikes);
+        .then(setRecipe);
+        
+        likeService.allLikesByRecipeId(recipeId)
+        .then(setLikes);
+        
+        likeService.getLikeId(userId, recipeId)
+            .then(setLikeId);
     }, [recipeId]);
-
+        
     const deleteButtonClickHandler = async () => {
         const hasConfirmed = confirm(`Are you sure you want to delete ${recipe.name}`);
 
@@ -32,24 +40,26 @@ export default function RecipeDetails() {
             navigate(Path.RecipeList);
         }
     }
-
-    // let isLiked = likeService.isLikedByUser(userId, recipeId);
     
-    // const likeHandler = async (e) => {
-    //     e.preventDefault();
+    const likeHandler = async (e) => {
+        e.preventDefault();
 
-    //     if (!userId || isUserOwner) return;
+        if (!userId || isOwner) return;
 
-    //     try {
-    //         const newLike = await likeService.like(recipeId);
+        try {
+            if (!likeId) {
+                await likeService.like(recipeId);
+            } else {
+                await likeService.unlike(likeId);
+            }
 
-    //         const allLikes = await likeService.allLikesByRecipeId(recipeId);
+            setLikeId(await likeService.getLikeId(userId, recipeId));
 
-    //         setLikes(likes => allLikes);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
+            setLikes(await likeService.allLikesByRecipeId(recipeId));
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     return(
         <div className="content-wrap recipe-details">
@@ -75,15 +85,16 @@ export default function RecipeDetails() {
                     <div className="recipe-details-name">
                         {recipe.name}
                     </div>
-                    <div className="recipe-details-rate-creator">
-                        <div className="recipe-rate recipe-details-rate">
+                    <div className="recipe-details-like-creator">
+                        <div className="recipe-like recipe-details-like">
                             {(userId && !isOwner)
                                 ? <button
                                     type="submit"
-                                    className="btn-unset">
-                                        <i className="fas fa-heart"></i> {99}
+                                    onClick={likeHandler}
+                                    className={likeId ? 'liked btn-unset' : 'btn-unset'}>
+                                        <i className="fas fa-heart"></i> {likes}
                                 </button>
-                                : <><i className="fas fa-heart"></i> {99}</>
+                                : <><i className="fas fa-heart"></i> {likes}</>
                             }
                         </div>
                         <div className="recipe-creator recipe-details-creator">
