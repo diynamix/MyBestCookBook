@@ -24,7 +24,7 @@ export default function RecipeDetails() {
         recipeService.getByRecipeId(recipeId)
         .then(setRecipe);
         
-        likeService.allLikesByRecipeId(recipeId)
+        likeService.getAllLikesByRecipeId(recipeId)
         .then(setLikes);
         
         likeService.getLikeId(userId, recipeId)
@@ -55,7 +55,7 @@ export default function RecipeDetails() {
 
             setLikeId(await likeService.getLikeId(userId, recipeId));
 
-            setLikes(await likeService.allLikesByRecipeId(recipeId));
+            setLikes(await likeService.getAllLikesByRecipeId(recipeId));
         } catch (err) {
             console.log(err);
         }

@@ -10,18 +10,6 @@ export const like = async (recipeId) => {
 
 export const unlike = async (likeId) => request.remove(`${baseUrl}/${likeId}`);
 
-export const isLikedByUser = async (userId, recipeId) => {
-    const query = new URLSearchParams({
-        where: `recipeId="${recipeId}"`,
-    });
-
-    const result = await request.get(`${baseUrl}?${query}`);
-
-    const isLiked = result.some(like => like?._ownerId === userId);
-
-    return isLiked;
-}
-
 export const getLikeId = async (userId, recipeId) => {
     const query = new URLSearchParams({
         where: `recipeId="${recipeId}"`,
@@ -36,7 +24,7 @@ export const getLikeId = async (userId, recipeId) => {
     return likeId;
 }
 
-export const allLikesByRecipeId = async (recipeId) => {
+export const getAllLikesByRecipeId = async (recipeId) => {
     const query = new URLSearchParams({
         where: `recipeId="${recipeId}"`,
     });

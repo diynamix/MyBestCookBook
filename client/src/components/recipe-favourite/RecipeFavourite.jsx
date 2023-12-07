@@ -5,18 +5,18 @@ import AuthContext from "../../contexts/authContext";
 
 import RecipeListItem from "../recipe-list-item/RecipeListItem";
 
-export default function RecipeMy() {
+export default function RecipeFavourite() {
     const [recipes, setRecipes] = useState([]);
-    const { userId, username } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
 
     useEffect(() => {
-        recipeService.getAllByUserId(userId)
+        recipeService.getFavourite(userId)
             .then(result => setRecipes(result));
     }, []);
 
     return (
         <div className="content-wrap">
-            <h2 className="divider">{username}'s Recipes</h2>
+            <h2 className="divider">My Favourite</h2>
 
             <section className="recipe-list">
 
@@ -26,7 +26,7 @@ export default function RecipeMy() {
 
                 {recipes.length === 0 &&
                     <div>
-                        <p>You haven't uploaded any recipes yet!</p>
+                        <p>You haven't added any favourite recipes yet.</p>
                     </div>
                 }
 

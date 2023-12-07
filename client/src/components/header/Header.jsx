@@ -29,7 +29,7 @@ export default function Header() {
 
                                 {isAuthenticated && (
                                     <li className="nav-item">
-                                        <Link to="">Favourite</Link>
+                                        <Link to={Path.RecipeListFavourite}>Favourite</Link>
                                     </li>
                                 )}
 

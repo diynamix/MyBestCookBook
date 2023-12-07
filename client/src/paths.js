@@ -4,6 +4,7 @@ const Path = {
     RecipeListMy: '/recipes/my',
     RecipeListByUser: '/recipes/by/:ownerId',
     RecipeDetails: '/recipes/:recipeId',
+    RecipeListFavourite: '/recipes/favourite',
     RecipeAdd: '/recipes/add',
     RecipeEdit: '/recipes/:recipeId/edit',
     Login: '/login',

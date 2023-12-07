@@ -16,6 +16,7 @@ import RecipeEdit from './components/recipe-edit/RecipeEdit';
 import RecipeMy from './components/recipe-my/RecipeMy';
 import RecipeByUser from './components/recipe-by-user/RecipeByUser';
 import AuthGuard from './components/guards/AuthGuard';
+import RecipeFavourite from './components/recipe-favourite/RecipeFavourite';
 
 function App() {
     return (
@@ -36,6 +37,7 @@ function App() {
                         <Route path={Path.RecipeAdd} element={<RecipeAdd />} />
                         <Route path={Path.RecipeEdit} element={<RecipeEdit />} />
                         <Route path={Path.RecipeListMy} element={<RecipeMy />} />
+                        <Route path={Path.RecipeListFavourite} element={<RecipeFavourite />} />
                         <Route path={Path.Logout} element={<Logout />} />
                     </Route>
                 </Routes>
