@@ -18,36 +18,43 @@ import RecipeByUser from './components/recipe-by-user/RecipeByUser';
 import AuthGuard from './components/guards/AuthGuard';
 import RecipeFavourite from './components/recipe-favourite/RecipeFavourite';
 import ErrorPage from './components/error-page/ErrorPage';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
     return (
-        <AuthProvider>
-        <>
-            <Header />
+        <ErrorBoundary>
             
-            <main className="divider">
-                <Routes>
-                    <Route path={Path.Home} element={<Home />} />
-                    <Route path={Path.RecipeList} element={<RecipeList />} />
-                    <Route path={Path.RecipeDetails} element={<RecipeDetails />} />
-                    <Route path={Path.RecipeListByUser} element={<RecipeByUser />} />
-                    <Route path={Path.Login} element={<Login />} />
-                    <Route path={Path.Register} element={<Register />} />
-                    <Route path={Path.ErrorPage} element={<ErrorPage />} />
+            <AuthProvider>
 
-                    <Route element={<AuthGuard />}>
-                        <Route path={Path.RecipeAdd} element={<RecipeAdd />} />
-                        <Route path={Path.RecipeEdit} element={<RecipeEdit />} />
-                        <Route path={Path.RecipeListMy} element={<RecipeMy />} />
-                        <Route path={Path.RecipeListFavourite} element={<RecipeFavourite />} />
-                        <Route path={Path.Logout} element={<Logout />} />
-                    </Route>
-                </Routes>
-            </main>
+                <>
+                    <Header />
+                    
+                    <main className="divider">
+                        <Routes>
+                            <Route path={Path.Home} element={<Home />} />
+                            <Route path={Path.RecipeList} element={<RecipeList />} />
+                            <Route path={Path.RecipeDetails} element={<RecipeDetails />} />
+                            <Route path={Path.RecipeListByUser} element={<RecipeByUser />} />
+                            <Route path={Path.Login} element={<Login />} />
+                            <Route path={Path.Register} element={<Register />} />
+                            <Route path={Path.ErrorPage} element={<ErrorPage />} />
 
-            <Footer />
-        </>
-        </AuthProvider>
+                            <Route element={<AuthGuard />}>
+                                <Route path={Path.RecipeAdd} element={<RecipeAdd />} />
+                                <Route path={Path.RecipeEdit} element={<RecipeEdit />} />
+                                <Route path={Path.RecipeListMy} element={<RecipeMy />} />
+                                <Route path={Path.RecipeListFavourite} element={<RecipeFavourite />} />
+                                <Route path={Path.Logout} element={<Logout />} />
+                            </Route>
+                        </Routes>
+                    </main>
+
+                    <Footer />
+                </>
+
+            </AuthProvider>
+
+        </ErrorBoundary>
     )
 }
 

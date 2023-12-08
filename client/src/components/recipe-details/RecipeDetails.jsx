@@ -57,7 +57,7 @@ export default function RecipeDetails() {
 
             setLikes(await likeService.getAllLikesByRecipeId(recipeId));
         } catch (err) {
-            navigate(Path.ErrorPage);
+            alert('Error. Please try again.');
         }
     };
 

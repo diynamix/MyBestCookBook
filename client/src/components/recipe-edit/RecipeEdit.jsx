@@ -66,7 +66,7 @@ export default function RecipeEdit() {
             
             navigate(pathToUrl(Path.RecipeDetails, { recipeId }));
         } catch (error) {
-            navigate(Path.ErrorPage);
+            alert('Error. Please try again.');
         }
     }
     

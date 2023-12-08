@@ -39,7 +39,7 @@ const request = async (method, url, data) => {
 
         return result;
     } catch (error) {
-        alert('Error');
+        alert('Error. Please try again!');
         // throw error;
     }
 };
