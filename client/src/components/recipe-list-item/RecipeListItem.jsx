@@ -21,6 +21,18 @@ export default function RecipeListItem(recipe) {
                 <div className="recipe-name">
                     <Link to={pathToUrl(Path.RecipeDetails, { recipeId: recipe._id, })}>{recipe.name}</Link>
                 </div>
+                {/* <div className="recipe-like">
+                    {(userId && !isUserOwner)
+                        ? <form onSubmit={likeHandler}>
+                            <button
+                                type="submit"
+                                className="btn-unset">
+                                    <i className="fas fa-heart"></i> 99
+                            </button>
+                        </form> 
+                        : <><i className="fas fa-heart"></i> 99</>
+                    }
+                </div> */}
                 <div className="recipe-creator">
                     {(isOwner)
                         ? <><Link to={Path.RecipeListMy}>My recipes</Link></>

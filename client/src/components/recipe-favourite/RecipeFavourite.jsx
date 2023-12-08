@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import * as recipeService from "../../services/recipeService";
 import AuthContext from "../../contexts/authContext";
 
-import RecipeListItem from "../recipe-list-item/RecipeListItem";
+import RecipeFavListItem from "./recipe-fav-list-item/RecipeFavListItem";
 
 export default function RecipeFavourite() {
     const [recipes, setRecipes] = useState([]);
@@ -21,7 +21,7 @@ export default function RecipeFavourite() {
             <section className="recipe-list">
 
                 {recipes.map(recipe => (
-                    <RecipeListItem key={recipe._id} {...recipe} />
+                    <RecipeFavListItem key={recipe._id} {...recipe} />
                 ))}
 
                 {recipes.length === 0 &&
