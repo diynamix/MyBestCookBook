@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Path from "../../paths";
 
 import * as recipeService from "../../services/recipeService";
 import { pathToUrl } from "../../utils/pathUtils";
+import Path from "../../paths";
 
 const FormKeys = {
     Name: 'name',
@@ -34,7 +34,6 @@ export default function RecipeEdit() {
     const navigate = useNavigate();
     const { recipeId } = useParams();
     const [recipe, setRecipe] = useState(FormInitialState);
-    // const [formValues, setFormValues] = useState(FormInitialState);
     const [errors, setErrors] = useState(FormInitialState);
 
     
@@ -67,13 +66,12 @@ export default function RecipeEdit() {
             
             navigate(pathToUrl(Path.RecipeDetails, { recipeId }));
         } catch (error) {
-            // Notification
-            console.log(error);
+            navigate(Path.ErrorPage);
         }
     }
     
     // const resetFormHandler = () => {
-        //     setFormValues(formInitialState);
+        //     setRecipe(formInitialState);
         // };
         
     const validationHandler = async (e) => {
@@ -90,10 +88,6 @@ export default function RecipeEdit() {
                 : '',
         }));
     };
-
-    // const {} = useForm(addRecipeSubmitHandler, {
-    //     //
-    // });
     
     return (
         <div className="content-wrap add-recipe">

@@ -10,6 +10,7 @@ const Path = {
     Login: '/login',
     Register: '/register',
     Logout: '/logout',
+    ErrorPage: '/error',
 };
 
 export default Path;

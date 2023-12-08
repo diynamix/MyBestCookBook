@@ -56,8 +56,7 @@ export default function RecipeAdd() {
             await recipeService.add(formValues);
             navigate(Path.RecipeList);
         } catch (error) {
-            // Notification
-            console.log(error);
+            navigate(Path.ErrorPage);
         }
     }
 

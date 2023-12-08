@@ -17,6 +17,7 @@ import RecipeMy from './components/recipe-my/RecipeMy';
 import RecipeByUser from './components/recipe-by-user/RecipeByUser';
 import AuthGuard from './components/guards/AuthGuard';
 import RecipeFavourite from './components/recipe-favourite/RecipeFavourite';
+import ErrorPage from './components/error-page/ErrorPage';
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
                     <Route path={Path.RecipeListByUser} element={<RecipeByUser />} />
                     <Route path={Path.Login} element={<Login />} />
                     <Route path={Path.Register} element={<Register />} />
+                    <Route path={Path.ErrorPage} element={<ErrorPage />} />
 
                     <Route element={<AuthGuard />}>
                         <Route path={Path.RecipeAdd} element={<RecipeAdd />} />

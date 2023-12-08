@@ -57,7 +57,7 @@ export default function RecipeDetails() {
 
             setLikes(await likeService.getAllLikesByRecipeId(recipeId));
         } catch (err) {
-            console.log(err);
+            navigate(Path.ErrorPage);
         }
     };
 
