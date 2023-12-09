@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom"
 
 import AuthContext from "../../contexts/authContext";
@@ -22,6 +22,19 @@ const FormInitialState = {
 export default function Register() {
     const {registerSubmitHandler} = useContext(AuthContext);
     const {formValues, onChange, onSubmit} = useForm(registerSubmitHandler, FormInitialState);
+    const [errors, setErrors] = useState(FormInitialState);
+
+    const passwordValidator = () => {
+        const passwordMatch = formValues[RegisterFormKeys.Password] === formValues[RegisterFormKeys.ConfirmPassword];
+        
+        setErrors(state => ({
+            ...state,
+            [RegisterFormKeys.ConfirmPassword]:
+            (!passwordMatch)
+                ? 'The password does not match!'
+                : '',
+        }));
+    };
 
     return(
         <div className="content-wrap login">
@@ -57,6 +70,7 @@ export default function Register() {
                                 className="form-control"
                                 onChange={onChange}
                                 required />
+                            <span className="validation-span">{errors[RegisterFormKeys.Email]}</span>
                         </div>
 
                         <div className="form-group">
@@ -80,7 +94,9 @@ export default function Register() {
                                 value={formValues[RegisterFormKeys.ConfirmPassword]}
                                 className="form-control"
                                 onChange={onChange}
+                                onBlur={passwordValidator}
                                 required />
+                            <span className="validation-span">{errors[RegisterFormKeys.ConfirmPassword]}</span>
                         </div>
 
                         <div>

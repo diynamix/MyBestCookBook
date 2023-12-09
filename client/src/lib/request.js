@@ -40,7 +40,7 @@ const request = async (method, url, data) => {
         return result;
     } catch (error) {
         alert('Error. Please try again!');
-        // throw error;
+        throw error;
     }
 };
 
